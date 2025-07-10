@@ -44,6 +44,19 @@ public class QueueWithArray{
         }
         
     }
+    public void peek(){
+        if(isEmpty()){
+            System.out.println("Queue is empty");
+        }else{
+            System.out.println("peek element: " + queue[boq]);
+        }
+    }
+    public void delete(){
+        queue = null;
+        toq = -1;
+        boq = -1;
+        System.out.println("Queue deleted");
+    }
 
     public static void main(String[] args) {
         QueueWithArray queue = new QueueWithArray(5);
@@ -58,6 +71,7 @@ public class QueueWithArray{
         System.out.println("Is queue full? " + queue.isFull());
         queue.deQueue();
         queue.deQueue();
+        queue.peek();
          queue.deQueue();
         queue.deQueue();
          queue.deQueue();
