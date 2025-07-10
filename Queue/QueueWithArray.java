@@ -9,26 +9,40 @@ public class QueueWithArray{
     }
     public boolean isEmpty(){
 
-        return toq==-1;
+        return toq==-1 || boq == queue.length;
     }
     public boolean isFull(){
-        return toq==queue.length-1 || boq ==queue.length;
+        return toq==queue.length-1 ;
     }
 
     public void enQueue(int data){
         if(isFull()){
             System.out.println("Queue is full");
             return;
-        }else if(isEmpty()){
+        }else if(toq==-1){
             boq = 0;
-            toq = 0;
-            queue[ ++toq] = data;
+            queue[++toq] = data;
             System.out.println("Enqueued: " + data);
         }else{
             
             queue[++toq] = data;
              System.out.println("Enqueued: " + data);
         }
+    }
+
+    public void deQueue(){
+        if(isEmpty()){
+            System.out.println("Queue is empty");
+            return;
+        }else{
+            System.out.println("Dequeued: " + queue[boq]);
+            boq++;
+            if(boq > toq) {
+                boq = -1; // Reset if queue is empty
+                toq = -1;
+            }
+        }
+        
     }
 
     public static void main(String[] args) {
@@ -38,5 +52,22 @@ public class QueueWithArray{
         queue.enQueue(10);
         queue.enQueue(20);
         queue.enQueue(30);
+           queue.enQueue(50);
+              queue.enQueue(40);
+
+        System.out.println("Is queue full? " + queue.isFull());
+        queue.deQueue();
+        queue.deQueue();
+         queue.deQueue();
+        queue.deQueue();
+         queue.deQueue();
+        queue.deQueue();
+         queue.deQueue();
+        queue.deQueue();
+        
+        
+         
+        
+         
     }
 }
